@@ -12,6 +12,7 @@ Como referência de pesquisa utilizamos o livro [Learning Apache Drill: Query an
 
 ![](https://www.oreilly.com/library/cover/9781492032786/360h/)
 
-O site oficial do Apache Drill
+Também no [site oficial](https://drill.apache.org/docs/) do Apache Drill há uma vasta documentação a respeito da ferramenta.
 
-![](https://drill.apache.org/docs/)
+## 1. Instalação do Apache Drill
+
