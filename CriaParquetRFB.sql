@@ -11,7 +11,7 @@ ALTER SESSION SET `store.format` = 'parquet';
 drop table receita_federal_pq;
 
 create table receita_federal_pq as
-select row_number() over(partition by 1) as rownum, columns[0] as texto from `SAMPLE_F.K032001K.D90308_100`;
+select row_number() over(partition by 1) as rownum, columns[0] as texto from `FK032001KD90308`;
 --Alterado o formato do arquivo de csv para tsv, pois estava cortando os dados na virgula
 --O defaultInputFormat do workspace foi alterado para tsv, para nao precisar renomear os arquivos
 
@@ -26,6 +26,15 @@ from receita_federal_pq;
 /*Este erro estava acontecendo e foi corrigido*/
 --Unexpected byte 0xa8 at position 984804
 --Abrir arquivo no EmEditor e salvar UTF8 without Signature ou converter via unix
+
+--O arquivo original tem 80GB precisa de conversão no terminal
+--Via unix
+--sed '1s/^\xEF\xBB\xBF//' < orig.txt > new.txt
+--Via dos (iconv)
+--iconv -f UTF-16 -t UTF-8 myfile.txt
+--PowerShell
+--Get-ChildItem -File -Recurse | % { $x = get-content -raw -path $_.fullname; $x -replace "`r`n","`n" | set-content -path $_.fullname }
+
 
 select * from receita_federal_reg;
 
