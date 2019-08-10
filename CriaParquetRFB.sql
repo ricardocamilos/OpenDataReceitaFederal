@@ -46,4 +46,4 @@ drop table receita_federal_cnae;
 create table receita_federal_cnae as
 select registro from receita_federal_reg where tp_registro=6
 
-select * from receita_federal_socio;
+select * from receita_federal_cnae;
