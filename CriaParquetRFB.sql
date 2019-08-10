@@ -11,7 +11,9 @@ ALTER SESSION SET `store.format` = 'parquet';
 drop table receita_federal_pq;
 
 create table receita_federal_pq as
-select row_number() over(partition by 1) as rownum, columns[0] as texto from `SAMPLE_F.K032001K.D90308_100.csv`;
+select row_number() over(partition by 1) as rownum, columns[0] as texto from `SAMPLE_F.K032001K.D90308_100`;
+--Alterado o formato do arquivo de csv para tsv, pois estava cortando os dados na virgula
+--O defaultInputFormat do workspace foi alterado para tsv, para nao precisar renomear os arquivos
 
 select * from receita_federal_pq;
 
@@ -37,13 +39,13 @@ select * from receita_federal_cnpj;
 /*Cria uma tabela com os registros dos socios*/
 drop table receita_federal_socio;
 create table receita_federal_socio as
-select registro from receita_federal_reg where tp_registro=2
+select registro from receita_federal_reg where tp_registro=2;
 
 select * from receita_federal_socio;
 
 /*Cria uma tabela com os registros dos socios*/
 drop table receita_federal_cnae;
 create table receita_federal_cnae as
-select registro from receita_federal_reg where tp_registro=6
+select registro from receita_federal_reg where tp_registro=6;
 
 select * from receita_federal_cnae;
