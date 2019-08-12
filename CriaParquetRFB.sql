@@ -5,13 +5,24 @@ show files;
 /*Configura a gravacao em formato Parquet*/
 ALTER SESSION SET `store.format` = 'parquet';
 
-/*Executado com o arquivo 01 de 20190515, conversao feita no emeditor*/
+/*Criei um arquivo com pouco mais de 100mil registros*/
 
 /*Cria uma copia dos dados em parquet com SK*/
 drop table receita_federal_pq;
 
+/*Teste feito para leitura de vários arquivos no mesmo diretório*/
+--https://drill.apache.org/docs/querying-directories/
+--select count(*) from `20190515/DADOS/`;
+/*Funcionou!*/
+
+/*Teste feito para leitura de vários arquivos compactados*/
+--https://drill.apache.org/docs/querying-plain-text-files/
+--select columns[0] from `20190515/ZIP/*.gz`;
+/*Não Funcionou com .zip*/
+/*Funcionou com .gz*/
+
 create table receita_federal_pq as
-select row_number() over(partition by 1) as rownum, columns[0] as texto from `20190515\DADOS_ABERTOS_CNPJ_01\K3241.K03200DV.D90607.L00001`;
+select row_number() over(partition by 1) as rownum, columns[0] as texto from `20190515/DADOS/K3241.K03200DV.D90607.L00001`;
 --Alterado o formato do arquivo de csv para tsv, pois estava cortando os dados na virgula
 --O defaultInputFormat do workspace foi alterado para tsv, para nao precisar renomear os arquivos
 
