@@ -5,17 +5,23 @@ show files;
 /*Configura a gravacao em formato Parquet*/
 ALTER SESSION SET `store.format` = 'parquet';
 
-/*Criei um arquivo com pouco mais de 100mil registros*/
+/*Executado com o arquivo 01 de 20190515, conversao feita no emeditor*/
 
 /*Cria uma copia dos dados em parquet com SK*/
 drop table receita_federal_pq;
 
 create table receita_federal_pq as
-select row_number() over(partition by 1) as rownum, columns[0] as texto from `FK032001KD90308`;
+select row_number() over(partition by 1) as rownum, columns[0] as texto from `20190515\DADOS_ABERTOS_CNPJ_01\K3241.K03200DV.D90607.L00001`;
 --Alterado o formato do arquivo de csv para tsv, pois estava cortando os dados na virgula
 --O defaultInputFormat do workspace foi alterado para tsv, para nao precisar renomear os arquivos
 
 select * from receita_federal_pq;
+
+/*Altera parametros de memória para processar os arquivos parquet*/
+alter session set `planner.width.max_per_node`=1;
+--alter session set `planner.width.max_per_query`=1;
+alter session set `planner.enable_hashjoin`=false;
+alter session set `planner.memory.enable_memory_estimation`=true;
 
 /*Cria uma tabela com uma coluna de tipo de registro*/
 drop table receita_federal_reg;
