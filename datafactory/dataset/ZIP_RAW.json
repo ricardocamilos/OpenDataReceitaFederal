@@ -1,0 +1,19 @@
+{
+	"name": "ZIP_RAW",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "CNPJ_01.zip",
+				"folderPath": "CNPJ",
+				"fileSystem": "raw"
+			}
+		}
+	}
+}

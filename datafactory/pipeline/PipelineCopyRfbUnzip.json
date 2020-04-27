@@ -38,13 +38,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ZIP_RFB",
+						"referenceName": "UNZIP_RFB",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ZIP_RAW",
+						"referenceName": "UNZIP_RAW",
 						"type": "DatasetReference"
 					}
 				]
