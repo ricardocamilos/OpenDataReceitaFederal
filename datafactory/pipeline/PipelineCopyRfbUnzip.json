@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_4wg",
+				"name": "Copy",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
