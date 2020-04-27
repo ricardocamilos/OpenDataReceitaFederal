@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_4wg",
+	"name": "ZIP_RAW",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
