@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "CNPJ_01.zip",
 				"folderPath": "CNPJ",
 				"fileSystem": "raw"
 			}
