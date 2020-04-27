@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "http://200.152.38.155/CNPJ/",
+			"url": "http://200.152.38.155/CNPJ/DADOS_ABERTOS_CNPJ_01.zip",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
