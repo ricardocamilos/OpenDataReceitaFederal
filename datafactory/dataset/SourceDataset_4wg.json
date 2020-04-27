@@ -10,9 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation"
-			},
-			"compression": {
-				"type": "GZip"
 			}
 		}
 	}
