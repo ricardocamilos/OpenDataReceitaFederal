@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_4wg",
+	"name": "ZIP_RFB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "HttpServer1",
