@@ -1,0 +1,17 @@
+{
+	"name": "RFB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "http://200.152.38.155/CNPJ/"
+			}
+		}
+	}
+}
