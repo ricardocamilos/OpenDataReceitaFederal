@@ -1,5 +1,5 @@
 {
-	"name": "ZIP_RAW",
+	"name": "UNZIP_RAW",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "CNPJ_01",
+				"fileName": "CNPJ_01.csv",
 				"folderPath": "CNPJ",
 				"fileSystem": "raw"
 			}
