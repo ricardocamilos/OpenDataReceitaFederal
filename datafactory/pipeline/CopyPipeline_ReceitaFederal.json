@@ -28,15 +28,10 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "FlattenHierarchy"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false
@@ -49,7 +44,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "CSV_RAW",
+						"referenceName": "ZIP_RAW",
 						"type": "DatasetReference"
 					}
 				]
