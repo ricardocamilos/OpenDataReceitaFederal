@@ -1,5 +1,5 @@
 {
-	"name": "ZIP_RFB",
+	"name": "UNZIP_RFB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "HttpServer1",
