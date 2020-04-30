@@ -107,7 +107,7 @@
 				"typeProperties": {
 					"variableName": "QuantidadeArquivo",
 					"value": {
-						"value": "range(1,2)",
+						"value": "@range(1,2)",
 						"type": "Expression"
 					}
 				}
