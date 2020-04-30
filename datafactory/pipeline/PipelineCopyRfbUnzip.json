@@ -68,7 +68,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"nomeArquivo": {
-											"value": "@variables('nomeArquivo')",
+											"value": "@concat(variables('nomeArquivo'),'.zip')",
 											"type": "Expression"
 										}
 									}
@@ -80,7 +80,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"nomeArquivo": {
-											"value": "@concat(utcnow('yyyyMMdd'),'\\',variables('nomeArquivo'))",
+											"value": "@concat(utcnow('yyyyMMdd'),'\\',variables('nomeArquivo'),'.csv')",
 											"type": "Expression"
 										}
 									}
@@ -95,7 +95,7 @@
 							"typeProperties": {
 								"variableName": "nomeArquivo",
 								"value": {
-									"value": "@concat('DADOS_ABERTOS_CNPJ_',if(equals(mod(item(),10),0),item(),concat('0',item(),'.zip')))",
+									"value": "@concat('DADOS_ABERTOS_CNPJ_',if(equals(mod(item(),10),0),item(),concat('0',item())))",
 									"type": "Expression"
 								}
 							}
