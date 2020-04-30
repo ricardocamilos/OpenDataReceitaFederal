@@ -5,12 +5,20 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"nomeArquivo": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "CNPJ_01.csv",
+				"fileName": {
+					"value": "@dataset().nomeArquivo",
+					"type": "Expression"
+				},
 				"folderPath": "CNPJ",
 				"fileSystem": "raw"
 			}
