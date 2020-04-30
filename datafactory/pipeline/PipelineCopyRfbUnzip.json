@@ -16,14 +16,21 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@variables('qtd_arquivos')",
+						"value": "@variables('QuantidadeArquivo')",
 						"type": "Expression"
 					},
 					"activities": [
 						{
 							"name": "Copy",
 							"type": "Copy",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Set variable2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "7.00:00:00",
 								"retry": 0,
@@ -57,15 +64,37 @@
 							"inputs": [
 								{
 									"referenceName": "UNZIP_RFB",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"nomeArquivo": {
+											"value": "@variables('nomeArquivo')",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "UNZIP_RAW",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"nomeArquivo": {
+											"value": "@variables('nomeArquivo')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
+						},
+						{
+							"name": "Set variable2",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "nomeArquivo",
+								"value": "@concat('DADOS_ABERTOS_CNPJ_',if(equals(mod(item(),10),0),item(),concat('0',item(),'.zip')))"
+							}
 						}
 					]
 				}
@@ -76,7 +105,7 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "qtd_arquivos",
+					"variableName": "QuantidadeArquivo",
 					"value": {
 						"value": "range(1,2)",
 						"type": "Expression"
@@ -85,11 +114,14 @@
 			}
 		],
 		"variables": {
-			"qtd_arquivos": {
+			"QuantidadeArquivo": {
 				"type": "Array",
 				"defaultValue": [
 					0
 				]
+			},
+			"nomeArquivo": {
+				"type": "String"
 			}
 		},
 		"annotations": []
