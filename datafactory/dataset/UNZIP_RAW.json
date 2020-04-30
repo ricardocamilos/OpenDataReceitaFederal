@@ -1,0 +1,27 @@
+{
+	"name": "UNZIP_RAW",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"nomeArquivo": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().nomeArquivo",
+					"type": "Expression"
+				},
+				"folderPath": "CNPJ",
+				"fileSystem": "raw"
+			}
+		}
+	}
+}
