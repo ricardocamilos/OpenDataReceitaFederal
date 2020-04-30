@@ -7,7 +7,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Set variable1",
+						"activity": "Set QuantidadeArquivo",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -19,13 +19,14 @@
 						"value": "@variables('QuantidadeArquivo')",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy",
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Set variable2",
+									"activity": "Set nomeArquivo",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -87,20 +88,23 @@
 							]
 						},
 						{
-							"name": "Set variable2",
+							"name": "Set nomeArquivo",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "nomeArquivo",
-								"value": "@concat('DADOS_ABERTOS_CNPJ_',if(equals(mod(item(),10),0),item(),concat('0',item(),'.zip')))"
+								"value": {
+									"value": "@concat(utcnow('yyyyMMdd'),'\\','DADOS_ABERTOS_CNPJ_',if(equals(mod(item(),10),0),item(),concat('0',item(),'.zip')))",
+									"type": "Expression"
+								}
 							}
 						}
 					]
 				}
 			},
 			{
-				"name": "Set variable1",
+				"name": "Set QuantidadeArquivo",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
