@@ -115,10 +115,7 @@
 		],
 		"variables": {
 			"QuantidadeArquivo": {
-				"type": "Array",
-				"defaultValue": [
-					0
-				]
+				"type": "Array"
 			},
 			"nomeArquivo": {
 				"type": "String"
